@@ -26,8 +26,8 @@ const Roulette = ({
       <div className="roulette-wrapper">
         <img className="roulette" src={rouletteImg} />
         <img className="arrow" src={arrowImgUrl} />
-        <button className={"start-button"}>{buttonText}</button>
       </div>
+      <button className={"start-button"}>{buttonText}</button>
     </div>
   );
 };

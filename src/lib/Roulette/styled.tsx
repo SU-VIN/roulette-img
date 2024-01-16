@@ -4,11 +4,10 @@ import { buttonShape } from "../types/roulette";
 export const RouletteStyle = (buttonShape: buttonShape) => css`
   display: grid;
   place-items: center;
+  position: relative;
 
   .roulette-wrapper {
     display: grid;
-
-    position: ${buttonShape == "round" ? "relative" : ""};
     margin: 60px 0px;
 
     .roulette {
@@ -23,19 +22,24 @@ export const RouletteStyle = (buttonShape: buttonShape) => css`
       z-index: 100;
       width: 30px;
     }
-    .start-button {
-      width: ${buttonShape == "round" ? "60px" : "100px"};
-      height: ${buttonShape == "round" ? "60px" : "30px"};
-      position: ${buttonShape == "round" ? "absolute" : "none"};
-      left: ${buttonShape == "round" ? "50%" : ""};
-      top: ${buttonShape == "round" ? "50%" : ""};
-      transform: ${buttonShape == "round" ? "translate(-50%, -50%)" : ""};
-      border-radius: ${buttonShape == "round" ? "50%" : ""};
-      border: ${buttonShape == "round" ? "none" : ""};
-      margin: ${buttonShape == "round" ? "" : "0 auto"};
-      margin-top: ${buttonShape == "round" ? "" : "30px"};
-      text-align: center;
-      cursor: pointer;
+  }
+  .start-button {
+    width: ${buttonShape == "round" ? "60px" : "100px"};
+    height: ${buttonShape == "round" ? "60px" : "30px"};
+    position: ${buttonShape == "round" ? "absolute" : "none"};
+    left: ${buttonShape == "round" ? "50%" : ""};
+    top: ${buttonShape == "round" ? "50%" : ""};
+    transform: ${buttonShape == "round" ? "translate(-50%, -50%)" : ""};
+    border-radius: ${buttonShape == "round" ? "50%" : ""};
+    border: ${buttonShape == "round" ? "none" : ""};
+    margin: ${buttonShape == "round" ? "" : "0 auto"};
+    margin-top: ${buttonShape == "round" ? "" : "30px"};
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #dedede;
+      border: none;
     }
   }
 `;
