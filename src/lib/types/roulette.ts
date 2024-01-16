@@ -4,8 +4,9 @@ type chunkRange = {
 };
 
 export interface Roulette {
+  imgUrl: string;
   chunkRange: chunkRange;
-  chunk: number;
-  arrowPosition: string;
+  chunk?: number;
+  arrowPosition?: string;
   winNumber?: number;
 }

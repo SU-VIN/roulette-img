@@ -1,6 +1,12 @@
 import { RouletteStyle } from "./styled";
-
-const Roulette = () => {
+import { Roulette as RouletteProps } from "../types/roulette";
+const Roulette = ({
+  imgUrl,
+  chunkRange,
+  chunk,
+  arrowPosition,
+  winNumber,
+}: RouletteProps) => {
   return (
     <div className={RouletteStyle}>
       <div className="roulette-wrapper">
