@@ -93,3 +93,20 @@ import { Roulette } from "roulette-img";
 ```
 
 <img src="public/assets/square-button.png" alt="스퀘어" style="width: 50%;"/>
+
+---
+
+## 스타일링 변경
+
+룰렛 이미지 - .roulette
+핀 이미지 - .arrow
+스타트 버튼 - .start-button
+
+```javascript
+  .start-button {
+    color: yellow;
+    background-color: red;
+  }
+```
+
+<img src="public/assets/style.png" alt="스타일변경" style="width: 50%;"/>
