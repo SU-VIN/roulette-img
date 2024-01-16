@@ -37,7 +37,8 @@ export const RouletteStyle = (
     border-radius: ${buttonShape === "round" ? "50%" : ""};
     border: ${buttonShape === "round" ? "none" : ""};
     margin: ${buttonShape === "round" ? "" : "0 auto"};
-    margin-top: ${buttonShape === "round" ? "" : "30px"};
+
+    margin-bottom: ${buttonShape === "round" ? "" : "20px"};
     text-align: center;
     cursor: pointer;
 
