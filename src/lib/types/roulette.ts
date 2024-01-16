@@ -1,17 +1,19 @@
-type chunkRange = {
+type ChunkRange = {
   start: number;
   end: number;
 };
 
-export type buttonShape = "round" | "squre";
+export type ButtonShape = "round" | "squre";
+
+export type Arrow = "up" | "down" | "left" | "right";
 
 export interface Roulette {
   imgUrl: string;
   arrowImgUrl: string;
-  chunkRange: chunkRange;
+  chunkRange: ChunkRange;
   chunk?: number;
-  arrowPosition?: string;
+  arrowPosition?: Arrow;
   winNumber?: number;
   buttonText?: string;
-  buttonShape?: buttonShape;
+  buttonShape?: ButtonShape;
 }

@@ -10,6 +10,15 @@ function App() {
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
       ></Roulette>
+
+      <Roulette
+        imgUrl="/assets/bg_circle-"
+        arrowImgUrl="/assets/arrow.png"
+        chunkRange={{ start: 2, end: 6 }}
+        chunk={4}
+        arrowPosition="left"
+        buttonShape="squre"
+      ></Roulette>
     </div>
   );
 }

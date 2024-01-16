@@ -1,7 +1,10 @@
 import { css } from "@emotion/css";
-import { buttonShape } from "../types/roulette";
+import { ButtonShape } from "../types/roulette";
 
-export const RouletteStyle = (buttonShape: buttonShape) => css`
+export const RouletteStyle = (
+  buttonShape: ButtonShape,
+  arrowRotate: number
+) => css`
   display: grid;
   place-items: center;
   position: relative;
@@ -9,6 +12,7 @@ export const RouletteStyle = (buttonShape: buttonShape) => css`
   .roulette-wrapper {
     display: grid;
     margin: 60px 0px;
+    transform: rotate(${arrowRotate}deg);
 
     .roulette {
       position: relative;
@@ -24,16 +28,16 @@ export const RouletteStyle = (buttonShape: buttonShape) => css`
     }
   }
   .start-button {
-    width: ${buttonShape == "round" ? "60px" : "100px"};
-    height: ${buttonShape == "round" ? "60px" : "30px"};
-    position: ${buttonShape == "round" ? "absolute" : "none"};
-    left: ${buttonShape == "round" ? "50%" : ""};
-    top: ${buttonShape == "round" ? "50%" : ""};
-    transform: ${buttonShape == "round" ? "translate(-50%, -50%)" : ""};
-    border-radius: ${buttonShape == "round" ? "50%" : ""};
-    border: ${buttonShape == "round" ? "none" : ""};
-    margin: ${buttonShape == "round" ? "" : "0 auto"};
-    margin-top: ${buttonShape == "round" ? "" : "30px"};
+    width: ${buttonShape === "round" ? "60px" : "100px"};
+    height: ${buttonShape === "round" ? "60px" : "30px"};
+    position: ${buttonShape === "round" ? "absolute" : "none"};
+    left: ${buttonShape === "round" ? "50%" : ""};
+    top: ${buttonShape === "round" ? "50%" : ""};
+    transform: ${buttonShape === "round" ? "translate(-50%, -50%)" : ""};
+    border-radius: ${buttonShape === "round" ? "50%" : ""};
+    border: ${buttonShape === "round" ? "none" : ""};
+    margin: ${buttonShape === "round" ? "" : "0 auto"};
+    margin-top: ${buttonShape === "round" ? "" : "30px"};
     text-align: center;
     cursor: pointer;
 
