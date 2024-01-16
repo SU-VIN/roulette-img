@@ -1,20 +1,32 @@
 import { RouletteStyle } from "./styled";
 import { Roulette as RouletteProps } from "../types/roulette";
+import { useState, useEffect } from "react";
 const Roulette = ({
-  imgUrl,
+  imgUrl, //picture-1
+  arrowImgUrl,
   chunkRange,
-  chunk,
-  arrowPosition,
+  chunk = chunkRange.start,
+  arrowPosition = "up",
   winNumber,
+  buttonText = "start",
+  buttonShape = "round",
 }: RouletteProps) => {
+  const [rouletteImg, setRouletteImg] = useState("");
+
+  useEffect(() => {
+    const createImgUrl = () => {
+      const url = imgUrl + chunk + ".png";
+      setRouletteImg(url);
+    };
+    createImgUrl();
+  }, []);
+
   return (
-    <div className={RouletteStyle}>
+    <div className={RouletteStyle(buttonShape!)}>
       <div className="roulette-wrapper">
-        <img className="roulette" />
-        <img className="arrow" />
-      </div>
-      <div className="button-wrapper">
-        <button className="start-button"></button>
+        <img className="roulette" src={rouletteImg} />
+        <img className="arrow" src={arrowImgUrl} />
+        <button className={"start-button"}>{buttonText}</button>
       </div>
     </div>
   );
