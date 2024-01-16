@@ -4,9 +4,9 @@ import { Arrow } from "../types/roulette";
 import { useState, useEffect, useRef } from "react";
 
 const Roulette = ({
-  imgUrl, //picture-1
-  arrowImgUrl,
-  chunkRange,
+  imgUrl = "/assets/bg_circle-",
+  arrowImgUrl = "/assets/arrow.png",
+  chunkRange = { start: 2, end: 6 },
   chunk = chunkRange.start,
   arrowPosition = "up",
   winNumber,
