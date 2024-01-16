@@ -76,8 +76,6 @@ import { Roulette } from "roulette-img";
 
 <img src="public/assets/round-button.png" alt="라운드버튼" style="width: 20%;"/>
 
-## 설정에 따른 모양
-
 ```javascript
 <Roulette
   imgUrl="/assets/bg_circle-"
