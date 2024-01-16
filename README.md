@@ -19,7 +19,7 @@
    <img src="public/assets/bg_circle-5.png" alt="사진4" style="width: 20%;"/>
    <img src="public/assets/bg_circle-6.png" alt="사진5" style="width: 20%;"/>
  </div>
-
+      위의 룰렛 모양처럼 룰렛의 첫번째 요소가 정중앙에 위치해야함.
 - 핀 이미지
   <img src="public/assets/arrow.png" alt="핀" style="width: 20%;"/>
   예시 이미지 입니다.
