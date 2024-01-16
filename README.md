@@ -24,7 +24,7 @@
 ---
 
 - 핀 이미지
-  <img src="public/assets/arrow.png" alt="핀" style="width: 20%;"/>
+  <img src="public/assets/arrow.png" alt="핀" style="width: 100px"/>
   예시 이미지 입니다.
 
 ## 설치 및 임포트
@@ -77,7 +77,7 @@ import { Roulette } from "roulette-img";
 ></Roulette>
 ```
 
-<img src="public/assets/round-button.png" alt="라운드버튼" style="width: 20%;"/>
+<img src="public/assets/round-button.png" alt="라운드버튼" style="width: 50%;"/>
 
 ```javascript
 <Roulette
@@ -92,4 +92,4 @@ import { Roulette } from "roulette-img";
 ></Roulette>
 ```
 
-<img src="public/assets/square-button.png" alt="스퀘어" style="width: 20%;"/>
+<img src="public/assets/square-button.png" alt="스퀘어" style="width: 50%;"/>
