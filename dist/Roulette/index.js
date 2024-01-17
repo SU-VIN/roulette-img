@@ -13,7 +13,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { RouletteStyle } from "./styled";
 import { useState, useEffect, useRef } from "react";
 var Roulette = function (_a) {
-    var _b = _a.imgUrl, imgUrl = _b === void 0 ? "/assets/bg_circle-" : _b, _c = _a.arrowImgUrl, arrowImgUrl = _c === void 0 ? "/assets/arrow.png" : _c, _d = _a.chunkRange, chunkRange = _d === void 0 ? { start: 2, end: 6 } : _d, _e = _a.chunk, chunk = _e === void 0 ? chunkRange.start : _e, _f = _a.arrowPosition, arrowPosition = _f === void 0 ? "up" : _f, winNumber = _a.winNumber, _g = _a.buttonText, buttonText = _g === void 0 ? "start" : _g, _h = _a.buttonShape, buttonShape = _h === void 0 ? "round" : _h;
+    var _b = _a.imgUrl, imgUrl = _b === void 0 ? "/assets/bg_circle-" : _b, _c = _a.arrowImgUrl, arrowImgUrl = _c === void 0 ? "/assets/arrow.png" : _c, _d = _a.chunkRange, chunkRange = _d === void 0 ? { start: 2, end: 6 } : _d, _e = _a.chunk, chunk = _e === void 0 ? chunkRange.start : _e, _f = _a.arrowPosition, arrowPosition = _f === void 0 ? "up" : _f, winNumber = _a.winNumber, _g = _a.buttonText, buttonText = _g === void 0 ? "start" : _g, _h = _a.buttonShape, buttonShape = _h === void 0 ? "round" : _h, buttonStyle = _a.buttonStyle, onWin = _a.onWin;
     var _j = useState(""), rouletteImg = _j[0], setRouletteImg = _j[1];
     var _k = useState(0), arrowRotate = _k[0], setArrowRotate = _k[1];
     var _l = useState(false), isDeactive = _l[0], setIsDeactive = _l[1];
@@ -47,6 +47,7 @@ var Roulette = function (_a) {
             winNumber = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
         }
         console.log(winNumber);
+        onWin === null || onWin === void 0 ? void 0 : onWin(winNumber);
     };
     //룰렛 정지 위치 지정
     var setStopRoulettePosition = function () {
@@ -74,6 +75,6 @@ var Roulette = function (_a) {
             rouletteRef.current.style.transform = "rotate(".concat(-deg, "deg)");
         }
     };
-    return (_jsxs("div", __assign({ className: RouletteStyle(buttonShape, arrowRotate) }, { children: [_jsxs("div", __assign({ className: "roulette-wrapper" }, { children: [_jsx("img", { ref: rouletteRef, className: "roulette", src: rouletteImg }), _jsx("img", { className: "arrow", src: arrowImgUrl })] })), _jsx("button", __assign({ className: "start-button", onClick: startonClickHandler, disabled: isDeactive }, { children: buttonText }))] })));
+    return (_jsxs("div", __assign({ className: RouletteStyle(buttonShape, arrowRotate) }, { children: [_jsxs("div", __assign({ className: "roulette-wrapper" }, { children: [_jsx("img", { ref: rouletteRef, className: "roulette", src: rouletteImg }), _jsx("img", { className: "arrow", src: arrowImgUrl })] })), buttonStyle ? (_jsx("div", __assign({ onClick: startonClickHandler }, { children: buttonStyle }))) : (_jsx("button", __assign({ className: "start-button", onClick: startonClickHandler, disabled: isDeactive }, { children: buttonText })))] })));
 };
 export default Roulette;

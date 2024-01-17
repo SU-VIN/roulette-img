@@ -1,3 +1,4 @@
+/// <reference types="react" />
 type ChunkRange = {
     start: number;
     end: number;
@@ -13,5 +14,7 @@ export interface Roulette {
     winNumber?: number;
     buttonText?: string;
     buttonShape?: ButtonShape;
+    buttonStyle?: React.ReactNode;
+    onWin?: (winNumber: number) => void;
 }
 export {};
