@@ -1,11 +1,11 @@
 {
   "name": "roulette-img",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "browser": "./browser/specific/main.js",
-  "description": "원하는 이미지 룰렛을 만드는 컴포넌트",
+  "description": "🎯내가 원하는 이미지로 생성하는 룰렛 컴포넌트 라이브러리",
   "author": {
     "name": "SU-VIN",
     "email": "dlatnqls225@naver.com"
