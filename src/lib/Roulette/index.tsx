@@ -12,6 +12,7 @@ const Roulette = ({
   winNumber,
   buttonText = "start",
   buttonShape = "round",
+  onWin,
 }: RouletteProps) => {
   const [rouletteImg, setRouletteImg] = useState("");
   const [arrowRotate, setArrowRotate] = useState(0);
@@ -50,6 +51,7 @@ const Roulette = ({
       winNumber = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
     }
     console.log(winNumber);
+    onWin?.(winNumber);
   };
 
   //룰렛 정지 위치 지정

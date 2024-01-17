@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Roulette } from "./lib";
 
 function App() {
+  const [winNumber, setWinNumber] = useState(0);
+
+  const getWinNumber = (number: number) => {
+    setWinNumber(number);
+  };
+
   return (
     <div className="App">
       <Roulette
@@ -18,6 +24,7 @@ function App() {
         chunk={4}
         arrowPosition="left"
         buttonShape="squre"
+        onWin={getWinNumber}
       ></Roulette>
     </div>
   );

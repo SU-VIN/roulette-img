@@ -16,4 +16,5 @@ export interface Roulette {
   winNumber?: number;
   buttonText?: string;
   buttonShape?: ButtonShape;
+  onWin?: (winNumber: number) => void;
 }
