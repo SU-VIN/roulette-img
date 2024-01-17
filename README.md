@@ -110,3 +110,42 @@ import { Roulette } from "roulette-img";
 ```
 
 <img src="public/assets/style.png" alt="스타일변경" style="width: 50%;"/>
+
+## version 0.3.0 추가 기능
+
+1. 당첨 번호 콜백 함수
+
+```javascript
+const [winNumber, setWinNumber] = useState(0);
+
+const getWinNumber = (number: number) => {
+  setWinNumber(number);
+};
+
+<Roulette
+  imgUrl="/assets/bg_circle-"
+  arrowImgUrl="/assets/arrow.png"
+  chunkRange={{ start: 2, end: 6 }}
+  onWin={getWinNumber}
+></Roulette>;
+```
+
+- 위와 같은 방법으로 당첨 번호를 컨트롤할 수 있습니다.
+
+2. 버튼 커스텀 기능
+
+```javascript
+<Roulette
+  imgUrl="/assets/bg_circle-"
+  arrowImgUrl="/assets/arrow.png"
+  chunkRange={{ start: 2, end: 6 }}
+  buttonStyle={
+    <>
+      <button>hello</button>
+    </>
+  }
+></Roulette>
+```
+
+- 위와 같은 방법으로 고정 버튼이 아닌 직접 버튼을 커스텀 할 수 있습니다.
+- 우선순위 buttonText,buttonShape < button.style

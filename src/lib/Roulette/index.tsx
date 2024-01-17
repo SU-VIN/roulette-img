@@ -93,7 +93,7 @@ const Roulette = ({
         <img className="arrow" src={arrowImgUrl} />
       </div>
       {buttonStyle ? (
-        <>{buttonStyle}</>
+        <div onClick={startonClickHandler}>{buttonStyle}</div>
       ) : (
         <button
           className={"start-button"}
