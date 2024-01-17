@@ -15,6 +15,11 @@ function App() {
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
+        buttonStyle={
+          <>
+            <button>hello</button>
+          </>
+        }
       ></Roulette>
 
       <Roulette

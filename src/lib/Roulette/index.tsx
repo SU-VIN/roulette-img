@@ -12,6 +12,7 @@ const Roulette = ({
   winNumber,
   buttonText = "start",
   buttonShape = "round",
+  buttonStyle,
   onWin,
 }: RouletteProps) => {
   const [rouletteImg, setRouletteImg] = useState("");
@@ -91,13 +92,17 @@ const Roulette = ({
         <img ref={rouletteRef} className="roulette" src={rouletteImg} />
         <img className="arrow" src={arrowImgUrl} />
       </div>
-      <button
-        className={"start-button"}
-        onClick={startonClickHandler}
-        disabled={isDeactive}
-      >
-        {buttonText}
-      </button>
+      {buttonStyle ? (
+        <>{buttonStyle}</>
+      ) : (
+        <button
+          className={"start-button"}
+          onClick={startonClickHandler}
+          disabled={isDeactive}
+        >
+          {buttonText}
+        </button>
+      )}
     </div>
   );
 };
