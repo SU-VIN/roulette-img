@@ -2,6 +2,12 @@ type ChunkRange = {
   start: number;
   end: number;
 };
+type winNumber = {
+  number: number | null;
+  option?: winNumberOption;
+};
+
+export type winNumberOption = "async" | "none";
 
 export type ButtonShape = "round" | "squre";
 
@@ -13,9 +19,9 @@ export interface Roulette {
   chunkRange: ChunkRange;
   chunk?: number;
   arrowPosition?: Arrow;
-  winNumber?: number;
+  winNumber?: winNumber;
   buttonText?: string;
   buttonShape?: ButtonShape;
   buttonStyle?: React.ReactNode;
-  onWin?: (winNumber: number) => void;
+  onWin?: (winNumber: number | null) => void;
 }

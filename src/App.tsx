@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Roulette } from "./lib";
 
 function App() {
-  const [winNumber, setWinNumber] = useState(0);
+  const [winNumber, setWinNumber] = useState<number | null>(null);
 
-  const getWinNumber = (number: number) => {
-    setWinNumber(number);
+  const clickButton = () => {
+    setTimeout(() => {
+      setWinNumber(2);
+    }, 3000);
   };
 
   return (
@@ -15,9 +17,10 @@ function App() {
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
+        winNumber={{ number: winNumber, option: "async" }}
         buttonStyle={
           <>
-            <button>hello</button>
+            <button onClick={clickButton}>hello</button>
           </>
         }
       ></Roulette>
@@ -27,9 +30,9 @@ function App() {
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
         chunk={4}
+        winNumber={{ number: 2 }}
         arrowPosition="left"
         buttonShape="squre"
-        onWin={getWinNumber}
       ></Roulette>
     </div>
   );

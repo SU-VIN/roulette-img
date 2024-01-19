@@ -9,7 +9,7 @@ const Roulette = ({
   chunkRange = { start: 2, end: 6 },
   chunk = chunkRange.start,
   arrowPosition = "up",
-  winNumber,
+  winNumber = { number: null, option: "none" },
   buttonText = "start",
   buttonShape = "round",
   buttonStyle,
@@ -41,26 +41,36 @@ const Roulette = ({
     const rotate = arrowPositionMap[arrowPosition];
     setArrowRotate(rotate);
   };
+
+  //api로 결과를 받아 시작할때
+  useEffect(() => {
+    if (winNumber?.number && winNumber?.option === "async") {
+      setWinNumber();
+      setStopRoulettePosition();
+    }
+  }, [winNumber?.number]);
+
+  //버튼으로 시작할때
   const startonClickHandler = () => {
-    setWinNumber();
-    setStopRoulettePosition();
+    if (winNumber.option === "none") {
+      setWinNumber();
+      setStopRoulettePosition();
+    }
   };
 
   //당첨번호 선택
   const setWinNumber = () => {
-    if (winNumber == null) {
-      winNumber = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
+    if (winNumber.option === null) {
+      winNumber.number = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
     }
-    console.log(winNumber);
-    onWin?.(winNumber);
+    onWin?.(winNumber!.number);
   };
 
   //룰렛 정지 위치 지정
   const setStopRoulettePosition = () => {
-    const min = (360 / chunk) * (winNumber! - 1) - 360 / chunk / 2;
-    const max = (360 / chunk) * (winNumber! - 1) + 360 / chunk / 2;
+    const min = (360 / chunk) * (winNumber!.number! - 1) - 360 / chunk / 2;
+    const max = (360 / chunk) * (winNumber!.number! - 1) + 360 / chunk / 2;
     const deg = Math.floor(Math.random() * (max - min + 1)) + min + 3240;
-    console.log(deg - 3240);
 
     spinRoulette(deg);
   };
@@ -70,7 +80,7 @@ const Roulette = ({
 
     const onAnimationEnd = () => {
       if (rouletteRef.current) {
-        alert(`축하합니다! ${winNumber}번 칸에 당첨되었습니다.`);
+        alert(`축하합니다! ${winNumber?.number}번 칸에 당첨되었습니다.`);
         rouletteRef.current.style.transition = "";
         rouletteRef.current.style.transform = "";
         setIsDeactive(false);
