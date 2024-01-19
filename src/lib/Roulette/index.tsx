@@ -9,7 +9,8 @@ const Roulette = ({
   chunkRange = { start: 2, end: 6 },
   chunk = chunkRange.start,
   arrowPosition = "up",
-  winNumber = { number: null, option: "none" },
+  winNumber,
+  drivingType,
   buttonText = "start",
   buttonShape = "round",
   buttonStyle,
@@ -21,6 +22,8 @@ const Roulette = ({
   const rouletteRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    console.log(winNumber);
+
     createImgUrl();
     setArrowPosition();
   }, []);
@@ -44,15 +47,16 @@ const Roulette = ({
 
   //api로 결과를 받아 시작할때
   useEffect(() => {
-    if (winNumber?.number && winNumber?.option === "async") {
+    console.log(winNumber);
+    if (winNumber && drivingType === "async") {
       setWinNumber();
       setStopRoulettePosition();
     }
-  }, [winNumber?.number]);
+  }, [winNumber]);
 
   //버튼으로 시작할때
   const startonClickHandler = () => {
-    if (winNumber.option === "none") {
+    if (drivingType === undefined) {
       setWinNumber();
       setStopRoulettePosition();
     }
@@ -60,16 +64,17 @@ const Roulette = ({
 
   //당첨번호 선택
   const setWinNumber = () => {
-    if (winNumber.option === null) {
-      winNumber.number = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
+    if (winNumber === undefined) {
+      winNumber = Math.floor(Math.random() * (chunk - 1 + 1)) + 1;
     }
-    onWin?.(winNumber!.number);
+
+    onWin?.(winNumber!);
   };
 
   //룰렛 정지 위치 지정
   const setStopRoulettePosition = () => {
-    const min = (360 / chunk) * (winNumber!.number! - 1) - 360 / chunk / 2;
-    const max = (360 / chunk) * (winNumber!.number! - 1) + 360 / chunk / 2;
+    const min = (360 / chunk) * (winNumber! - 1) - 360 / chunk / 2;
+    const max = (360 / chunk) * (winNumber! - 1) + 360 / chunk / 2;
     const deg = Math.floor(Math.random() * (max - min + 1)) + min + 3240;
 
     spinRoulette(deg);
@@ -80,11 +85,13 @@ const Roulette = ({
 
     const onAnimationEnd = () => {
       if (rouletteRef.current) {
-        alert(`축하합니다! ${winNumber?.number}번 칸에 당첨되었습니다.`);
+        alert(`축하합니다! ${winNumber}번 칸에 당첨되었습니다.`);
         rouletteRef.current.style.transition = "";
         rouletteRef.current.style.transform = "";
         setIsDeactive(false);
       }
+
+      console.log(winNumber);
     };
 
     if (rouletteRef.current) {
@@ -103,7 +110,7 @@ const Roulette = ({
         <img className="arrow" src={arrowImgUrl} />
       </div>
       {buttonStyle ? (
-        <div onClick={startonClickHandler}>{buttonStyle}</div>
+        <div>{buttonStyle}</div>
       ) : (
         <button
           className={"start-button"}
