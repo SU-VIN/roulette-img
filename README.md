@@ -172,42 +172,39 @@ const getWinNumber = (number: number) => {
 당첨번호를 외부 api에서 받아온 후 넘길수 있습니다.
 
 ```javascript
-//winNumber 타입이 변경되었습니다.
+//타입이 변경되었습니다.
 export interface Roulette {
   ...
-  winNumber?: winNumber;
+  winNumber?: number | null;
+  drivingType?: winNumberOption;
   ...
 }
 
-type winNumber = {
-  number: number | null,
-  option?: winNumberOption,
-};
 
-export type winNumberOption = "async" | "none";
+export type winNumberOption = "async" | undefined;
 //async옵션은 외부 api에서 당첨번호를 받아와 사용할때 - buttonStyle옵션을 사용해 커스터마이징 버튼을 만든후 직접 api와 연결해주세요
-//none옵션은 그저 로컬에서 내가 지정한 값을 넣고싶을때
+
 ```
 
 ```javascript
   const [winNumber, setWinNumber] = useState<number | null>(null);
 
   const clickButton = () => {
-    //예시로 비동기 함수 setTimeout을 사용했습니다.
+    setWinNumber(null); // null로 초기화를 하면 버튼을 누를때마다 룰렛 돌아감 아닐시 한번만 돌아감
     setTimeout(() => {
       setWinNumber(2);
     }, 3000);
   };
 
-
-  return(
+  return (
     <div className="App">
-      //비동기로 받아올때
+    //외부 API에서 당첨값을 받아 보낼때
       <Roulette
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
-        winNumber={{ number: winNumber, option: "async" }}
+        winNumber={winNumber}
+        drivingType="async"
         buttonStyle={
           <>
             <button onClick={clickButton}>hello</button>
@@ -215,26 +212,22 @@ export type winNumberOption = "async" | "none";
         }
       ></Roulette>
       //직접 값을 선언
-        <Roulette
-        imgUrl="/assets/bg_circle-"
-        arrowImgUrl="/assets/arrow.png"
-        chunkRange={{ start: 2, end: 6 }}
-        chunk={4}
-        winNumber={{ number: 2 }}
-        arrowPosition="left"
-        buttonShape="squre"
-      ></Roulette>
-
-      //랜덤값 사용
       <Roulette
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
+        winNumber={2}
         chunk={4}
-        // winNumber={{ number: 2 }}
         arrowPosition="left"
         buttonShape="squre"
       ></Roulette>
-
+    //랜덤값
+      <Roulette
+        imgUrl="/assets/bg_circle-"
+        arrowImgUrl="/assets/arrow.png"
+        chunkRange={{ start: 2, end: 6 }}
+        chunk={6}
+        arrowPosition="right"
+      ></Roulette>
       );
 ```
