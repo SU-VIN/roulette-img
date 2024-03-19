@@ -7,6 +7,7 @@ const Roulette = ({
   imgUrl = "/assets/bg_circle-",
   arrowImgUrl = "/assets/arrow.png",
   chunkRange = { start: 2, end: 6 },
+  startPosition,
   chunk = chunkRange.start,
   arrowPosition = "up",
   winNumber,
@@ -14,6 +15,7 @@ const Roulette = ({
   buttonText = "start",
   buttonShape = "round",
   buttonStyle,
+
   onWin,
 }: RouletteProps) => {
   const [rouletteImg, setRouletteImg] = useState("");
@@ -73,11 +75,19 @@ const Roulette = ({
 
   //룰렛 정지 위치 지정
   const setStopRoulettePosition = () => {
-    const min = (360 / chunk) * (winNumber! - 1) - 360 / chunk / 2;
-    const max = (360 / chunk) * (winNumber! - 1) + 360 / chunk / 2;
-    const deg = Math.floor(Math.random() * (max - min + 1)) + min + 3240;
+    if (startPosition === "center") {
+      const min = (360 / chunk) * (winNumber! - 1) - 360 / chunk / 2;
+      const max = (360 / chunk) * (winNumber! - 1) + 360 / chunk / 2;
+      const deg = Math.floor(Math.random() * (max - min + 1)) + min + 3240;
 
-    spinRoulette(deg);
+      spinRoulette(deg);
+    } else if (startPosition === "corner") {
+      const min = (360 / chunk) * (winNumber! - 1);
+      const max = (360 / chunk) * winNumber!;
+
+      const deg = Math.floor(Math.random() * (max - min + 1)) + min + 3240;
+      spinRoulette(deg);
+    }
   };
 
   const spinRoulette = (deg: number) => {
@@ -110,7 +120,9 @@ const Roulette = ({
         <img className="arrow" src={arrowImgUrl} />
       </div>
       {buttonStyle ? (
-        <div>{buttonStyle}</div>
+        <button disabled={isDeactive} style={{ border: "none" }}>
+          {buttonStyle}
+        </button>
       ) : (
         <button
           className={"start-button"}

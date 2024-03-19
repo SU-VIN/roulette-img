@@ -12,7 +12,7 @@ function App() {
       setWinNumber(2);
       console.log(winNumber);
       console.log("start");
-    }, 3000);
+    }, 1000);
   };
 
   return (
@@ -21,18 +21,7 @@ function App() {
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
-        winNumber={winNumber}
-        drivingType="async"
-        buttonStyle={
-          <>
-            <button onClick={clickButton}>hello</button>
-          </>
-        }
-      ></Roulette>
-      <Roulette
-        imgUrl="/assets/bg_circle-"
-        arrowImgUrl="/assets/arrow.png"
-        chunkRange={{ start: 2, end: 6 }}
+        startPosition="center"
         winNumber={2}
         chunk={4}
         arrowPosition="left"
@@ -43,8 +32,34 @@ function App() {
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
+        startPosition="center"
         chunk={6}
         arrowPosition="right"
+      ></Roulette>
+
+      <Roulette
+        imgUrl="/assets/Aroultte-"
+        arrowImgUrl="/assets/Aarrow.png"
+        chunkRange={{ start: 4, end: 4 }}
+        startPosition="corner"
+        winNumber={winNumber}
+        drivingType="async"
+        buttonStyle={
+          <>
+            <img
+              src="/assets/Abutton.png"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "120px",
+                cursor: "pointer",
+              }}
+              onClick={clickButton}
+            ></img>
+          </>
+        }
       ></Roulette>
     </div>
   );
