@@ -114,24 +114,26 @@ const Roulette = ({
     }
   };
   return (
-    <div className={RouletteStyle(buttonShape, arrowRotate)}>
-      <div className="roulette-wrapper">
-        <img ref={rouletteRef} className="roulette" src={rouletteImg} />
-        <img className="arrow" src={arrowImgUrl} />
+    <div className="roulette-container">
+      <div className={RouletteStyle(buttonShape, arrowRotate)}>
+        <div className="roulette-wrapper">
+          <img ref={rouletteRef} className="roulette" src={rouletteImg} />
+          <img className="arrow" src={arrowImgUrl} />
+        </div>
+        {buttonStyle ? (
+          <button disabled={isDeactive} style={{ border: "none" }}>
+            {buttonStyle}
+          </button>
+        ) : (
+          <button
+            className={"start-button"}
+            onClick={startonClickHandler}
+            disabled={isDeactive}
+          >
+            {buttonText}
+          </button>
+        )}
       </div>
-      {buttonStyle ? (
-        <button disabled={isDeactive} style={{ border: "none" }}>
-          {buttonStyle}
-        </button>
-      ) : (
-        <button
-          className={"start-button"}
-          onClick={startonClickHandler}
-          disabled={isDeactive}
-        >
-          {buttonText}
-        </button>
-      )}
     </div>
   );
 };
