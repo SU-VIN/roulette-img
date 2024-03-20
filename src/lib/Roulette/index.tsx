@@ -95,7 +95,7 @@ const Roulette = ({
 
     const onAnimationEnd = () => {
       if (rouletteRef.current) {
-        alert(`축하합니다! ${winNumber}번 칸에 당첨되었습니다.`);
+        // alert(`축하합니다! ${winNumber}번 칸에 당첨되었습니다.`);
         rouletteRef.current.style.transition = "";
         rouletteRef.current.style.transform = "";
         setIsDeactive(false);

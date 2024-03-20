@@ -94,6 +94,6 @@ var Roulette = function (_a) {
             rouletteRef.current.style.transform = "rotate(".concat(-deg, "deg)");
         }
     };
-    return (_jsxs("div", __assign({ className: RouletteStyle(buttonShape, arrowRotate) }, { children: [_jsxs("div", __assign({ className: "roulette-wrapper" }, { children: [_jsx("img", { ref: rouletteRef, className: "roulette", src: rouletteImg }), _jsx("img", { className: "arrow", src: arrowImgUrl })] })), buttonStyle ? (_jsx("button", __assign({ disabled: isDeactive, style: { border: "none" } }, { children: buttonStyle }))) : (_jsx("button", __assign({ className: "start-button", onClick: startonClickHandler, disabled: isDeactive }, { children: buttonText })))] })));
+    return (_jsx("div", __assign({ className: "roulette-container" }, { children: _jsxs("div", __assign({ className: RouletteStyle(buttonShape, arrowRotate) }, { children: [_jsxs("div", __assign({ className: "roulette-wrapper" }, { children: [_jsx("img", { ref: rouletteRef, className: "roulette", src: rouletteImg }), _jsx("img", { className: "arrow", src: arrowImgUrl })] })), buttonStyle ? (_jsx("button", __assign({ disabled: isDeactive, style: { border: "none" } }, { children: buttonStyle }))) : (_jsx("button", __assign({ className: "start-button", onClick: startonClickHandler, disabled: isDeactive }, { children: buttonText })))] })) })));
 };
 export default Roulette;
