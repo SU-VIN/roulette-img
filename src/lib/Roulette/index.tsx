@@ -15,8 +15,8 @@ const Roulette = ({
   buttonText = "start",
   buttonShape = "round",
   buttonStyle,
-
   onWin,
+  endRoulette,
 }: RouletteProps) => {
   const [rouletteImg, setRouletteImg] = useState("");
   const [arrowRotate, setArrowRotate] = useState(0);
@@ -95,7 +95,8 @@ const Roulette = ({
 
     const onAnimationEnd = () => {
       if (rouletteRef.current) {
-        // alert(`축하합니다! ${winNumber}번 칸에 당첨되었습니다.`);
+        //끝나고
+        endRoulette?.();
         rouletteRef.current.style.transition = "";
         rouletteRef.current.style.transform = "";
         setIsDeactive(false);

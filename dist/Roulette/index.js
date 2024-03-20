@@ -13,7 +13,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { RouletteStyle } from "./styled";
 import { useState, useEffect, useRef } from "react";
 var Roulette = function (_a) {
-    var _b = _a.imgUrl, imgUrl = _b === void 0 ? "/assets/bg_circle-" : _b, _c = _a.arrowImgUrl, arrowImgUrl = _c === void 0 ? "/assets/arrow.png" : _c, _d = _a.chunkRange, chunkRange = _d === void 0 ? { start: 2, end: 6 } : _d, startPosition = _a.startPosition, _e = _a.chunk, chunk = _e === void 0 ? chunkRange.start : _e, _f = _a.arrowPosition, arrowPosition = _f === void 0 ? "up" : _f, winNumber = _a.winNumber, drivingType = _a.drivingType, _g = _a.buttonText, buttonText = _g === void 0 ? "start" : _g, _h = _a.buttonShape, buttonShape = _h === void 0 ? "round" : _h, buttonStyle = _a.buttonStyle, onWin = _a.onWin;
+    var _b = _a.imgUrl, imgUrl = _b === void 0 ? "/assets/bg_circle-" : _b, _c = _a.arrowImgUrl, arrowImgUrl = _c === void 0 ? "/assets/arrow.png" : _c, _d = _a.chunkRange, chunkRange = _d === void 0 ? { start: 2, end: 6 } : _d, startPosition = _a.startPosition, _e = _a.chunk, chunk = _e === void 0 ? chunkRange.start : _e, _f = _a.arrowPosition, arrowPosition = _f === void 0 ? "up" : _f, winNumber = _a.winNumber, drivingType = _a.drivingType, _g = _a.buttonText, buttonText = _g === void 0 ? "start" : _g, _h = _a.buttonShape, buttonShape = _h === void 0 ? "round" : _h, buttonStyle = _a.buttonStyle, onWin = _a.onWin, endRoulette = _a.endRoulette;
     var _j = useState(""), rouletteImg = _j[0], setRouletteImg = _j[1];
     var _k = useState(0), arrowRotate = _k[0], setArrowRotate = _k[1];
     var _l = useState(false), isDeactive = _l[0], setIsDeactive = _l[1];
@@ -79,7 +79,8 @@ var Roulette = function (_a) {
         setIsDeactive(true);
         var onAnimationEnd = function () {
             if (rouletteRef.current) {
-                alert("\uCD95\uD558\uD569\uB2C8\uB2E4! ".concat(winNumber, "\uBC88 \uCE78\uC5D0 \uB2F9\uCCA8\uB418\uC5C8\uC2B5\uB2C8\uB2E4."));
+                //끝나고
+                endRoulette;
                 rouletteRef.current.style.transition = "";
                 rouletteRef.current.style.transform = "";
                 setIsDeactive(false);

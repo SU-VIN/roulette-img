@@ -15,6 +15,9 @@ function App() {
     }, 1000);
   };
 
+  const rouletteEnd = () => {
+    alert(`당첨번호는 ${winNumber}`);
+  };
   return (
     <div className="App">
       <Roulette
@@ -60,6 +63,7 @@ function App() {
             ></img>
           </>
         }
+        endRoulette={rouletteEnd}
       ></Roulette>
     </div>
   );

@@ -20,5 +20,6 @@ export interface Roulette {
     buttonShape?: ButtonShape;
     buttonStyle?: React.ReactNode;
     onWin?: (winNumber: number | null) => void;
+    endRoulette?: () => void;
 }
 export {};
