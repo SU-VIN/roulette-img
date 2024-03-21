@@ -19,7 +19,7 @@ var Roulette = function (_a) {
     var _l = useState(false), isDeactive = _l[0], setIsDeactive = _l[1];
     var rouletteRef = useRef(null);
     useEffect(function () {
-        console.log(winNumber);
+        // console.log(winNumber);
         createImgUrl();
         setArrowPosition();
     }, []);
@@ -40,7 +40,7 @@ var Roulette = function (_a) {
     };
     //api로 결과를 받아 시작할때
     useEffect(function () {
-        console.log(winNumber);
+        // console.log(winNumber);
         if (winNumber && drivingType === "async") {
             setWinNumber();
             setStopRoulettePosition();
@@ -79,13 +79,12 @@ var Roulette = function (_a) {
         setIsDeactive(true);
         var onAnimationEnd = function () {
             if (rouletteRef.current) {
-                //끝나고
-                endRoulette;
+                endRoulette === null || endRoulette === void 0 ? void 0 : endRoulette();
                 rouletteRef.current.style.transition = "";
                 rouletteRef.current.style.transform = "";
                 setIsDeactive(false);
             }
-            console.log(winNumber);
+            // console.log(winNumber);
         };
         if (rouletteRef.current) {
             rouletteRef.current.addEventListener("transitionend", onAnimationEnd, {

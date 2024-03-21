@@ -16,7 +16,11 @@ function App() {
   };
 
   const rouletteEnd = () => {
-    alert(`당첨번호는 ${winNumber}`);
+    // alert(`당첨번호는 ${winNumber}`);
+    <img
+      src={"/assets/arrow.png"}
+      style={{ position: "absolute", zIndex: 20 }}
+    ></img>;
   };
   return (
     <div className="App">

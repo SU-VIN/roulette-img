@@ -24,7 +24,7 @@ const Roulette = ({
   const rouletteRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    console.log(winNumber);
+    // console.log(winNumber);
 
     createImgUrl();
     setArrowPosition();
@@ -49,7 +49,7 @@ const Roulette = ({
 
   //api로 결과를 받아 시작할때
   useEffect(() => {
-    console.log(winNumber);
+    // console.log(winNumber);
     if (winNumber && drivingType === "async") {
       setWinNumber();
       setStopRoulettePosition();
@@ -95,14 +95,13 @@ const Roulette = ({
 
     const onAnimationEnd = () => {
       if (rouletteRef.current) {
-        //끝나고
         endRoulette?.();
         rouletteRef.current.style.transition = "";
         rouletteRef.current.style.transform = "";
         setIsDeactive(false);
       }
 
-      console.log(winNumber);
+      // console.log(winNumber);
     };
 
     if (rouletteRef.current) {

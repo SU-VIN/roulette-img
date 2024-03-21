@@ -24,5 +24,5 @@ export interface Roulette {
   buttonShape?: ButtonShape;
   buttonStyle?: React.ReactNode;
   onWin?: (winNumber: number | null) => void;
-  endRoulette?: () => void; // 룰렛이 끝나고 실행될 함수
+  endRoulette?: () => void | React.ReactNode; // 룰렛이 끝나고 실행될 함수
 }
