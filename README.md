@@ -84,19 +84,7 @@ export default App;
 
 # Props 📋
 
-| **Prop Name**   | **Type**                         | **Required**   | **Default**        | **Description**                                                     |
-| --------------- | -------------------------------- | -------------- | ------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | -------------------------------------- |
-| `imgUrl`        | `string`                         | ✅             | -                  | Path to the roulette images. Exclude the number and file extension. |
-| `arrowImgUrl`   | `string`                         | ✅             | -                  | Path to the arrow image.                                            |
-| `chunkRange`    | `{ start: number; end: number }` | ✅             | -                  | Range of the number of slots for the roulette.                      |
-| `chunk`         | `number`                         | ❌             | `chunkRange.start` | Number of slots in the roulette.                                    |
-| `arrowPosition` | `"up"                            | "down"         | "left"             | "right"`                                                            | ❌                                                                      | `"up"` | Position of the arrow on the roulette. |
-| `winNumber`     | `number                          | null`          | ❌                 | Random                                                              | Predefined winning slot. Random if not provided.                        |
-| `buttonText`    | `string`                         | ❌             | `"start"`          | Text displayed on the start button.                                 |
-| `buttonShape`   | `"round"                         | "square"`      | ❌                 | `"round"`                                                           | Shape of the start button.                                              |
-| `buttonStyle`   | `React.ReactNode`                | ❌             | -                  | Custom button component to replace the default start button.        |
-| `onWin`         | `(winNumber: number              | null) => void` | ❌                 | -                                                                   | Callback function triggered when the spin ends with the winning number. |
-| `drivingType`   | `"async"                         | undefined`     | ❌                 | `undefined`                                                         | Enables asynchronous winning number handling via external APIs.         |
+| Prop Name | Type | Required | Default | Description | | --------------- | -------------------------------- | -------------- | ------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | -------------------------------------- | | imgUrl | string | ✅ | - | Path to the roulette images. Exclude the number and file extension. | | arrowImgUrl | string | ✅ | - | Path to the arrow image. | | chunkRange | { start: number; end: number } | ✅ | - | Range of the number of slots for the roulette. | | chunk | number | ❌ | chunkRange.start | Number of slots in the roulette. | | arrowPosition | "up" | "down" | "left" | "right" | ❌ | "up" | Position of the arrow on the roulette. | | winNumber | number | null | ❌ | Random | Predefined winning slot. Random if not provided. | | buttonText | string | ❌ | "start" | Text displayed on the start button. | | buttonShape | "round" | "square" | ❌ | "round" | Shape of the start button. | | buttonStyle | React.ReactNode | ❌ | - | Custom button component to replace the default start button. | | onWin | (winNumber: number | null) => void | ❌ | - | Callback function triggered when the spin ends with the winning number. | | drivingType | "async" | undefined | ❌ | undefined | Enables asynchronous winning number handling via external APIs. |         |
 
 ## Styling 🎨
 
