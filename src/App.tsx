@@ -23,14 +23,28 @@ function App() {
     ></img>;
   };
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ display: "flex", justifyContent: "center", gap: "50px" }}
+    >
       <Roulette
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
         startPosition="center"
         winNumber={2}
-        chunk={4}
+        chunk={2}
+        arrowPosition="up"
+        buttonShape="round"
+      ></Roulette>
+
+      <Roulette
+        imgUrl="/assets/bg_circle-"
+        arrowImgUrl="/assets/arrow.png"
+        chunkRange={{ start: 2, end: 6 }}
+        startPosition="center"
+        winNumber={2}
+        chunk={3}
         arrowPosition="left"
         buttonShape="squre"
       ></Roulette>
@@ -40,34 +54,45 @@ function App() {
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
         startPosition="center"
-        chunk={6}
-        arrowPosition="right"
+        winNumber={2}
+        chunk={4}
+        arrowPosition="down"
+        buttonStyle={
+          <div
+            style={{
+              width: "100px",
+              height: "40px",
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "5px",
+              display: "grid",
+              placeItems: "center",
+            }}
+          >
+            custom button
+          </div>
+        }
       ></Roulette>
 
       <Roulette
-        imgUrl="/assets/Aroultte-"
-        arrowImgUrl="/assets/Aarrow.png"
-        chunkRange={{ start: 4, end: 4 }}
-        startPosition="corner"
-        winNumber={winNumber}
-        drivingType="async"
-        buttonStyle={
-          <>
-            <img
-              src="/assets/Abutton.png"
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "120px",
-                cursor: "pointer",
-              }}
-              onClick={clickButton}
-            ></img>
-          </>
-        }
-        endRoulette={rouletteEnd}
+        imgUrl="/assets/bg_circle-"
+        arrowImgUrl="/assets/arrow.png"
+        chunkRange={{ start: 2, end: 6 }}
+        startPosition="center"
+        winNumber={2}
+        chunk={5}
+        arrowPosition="right"
+        buttonShape="round"
+        buttonText="button text custom"
+      ></Roulette>
+
+      <Roulette
+        imgUrl="/assets/bg_circle-"
+        arrowImgUrl="/assets/arrow.png"
+        chunkRange={{ start: 2, end: 6 }}
+        startPosition="center"
+        chunk={6}
+        arrowPosition="up"
       ></Roulette>
     </div>
   );

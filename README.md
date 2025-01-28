@@ -1,233 +1,140 @@
-# roulette-img 사용 가이드 🧚‍♀️
+# `roulette-img` 🌀
+
+A lightweight and customizable React component for creating roulette animations with ease.
+
+   <img src="public/assets/imgRouletteGif.gif" alt="rouletteGif" style="width: 100%;"/>
+
+## Features ✨
+
+- **Customizable Roulette**: Easily change the number of slots, images, and arrow positions.
+- **Random or Controlled Results**: Supports random results or fixed winning numbers.
+- **Customizable Buttons**: Fully style or replace the default start button.
+- **Event Callbacks**: React to spin results with `onWin`.
+- **Asynchronous Control**: Integrate external APIs to fetch winning numbers dynamically.
 
 ---
 
-##### 필요소스
+## Installation 📦
 
-- 룰렛 이미지 (확장자: png)
-- 핀 이미지
+Install the package using npm:
 
-## 이미지 준비
-
-- 룰렛 이미지 이름은 **이미지이름-이미지번호.png**
-  ex) rouletteImg-2.png , 여기서 이미지 번호는 룰렛의 칸 수를 나타냄.
-- 이미지 모양
-<div style="display: flex; justify-content: space-around; width=100vw;">
-   <img src="public/assets/bg_circle-2.png" alt="사진1" style="width: 20%;"/>
-   <img src="public/assets/bg_circle-3.png" alt="사진2" style="width: 20%;"/>
-   <img src="public/assets/bg_circle-4.png" alt="사진3" style="width: 20%;"/>
-   <img src="public/assets/bg_circle-5.png" alt="사진4" style="width: 20%;"/>
-   <img src="public/assets/bg_circle-6.png" alt="사진5" style="width: 20%;"/>
- </div>
-      위의 룰렛 모양처럼 룰렛의 첫번째 요소가 정중앙에 위치해야함.
-
----
-
-- 핀 이미지
-  <img src="public/assets/arrow.png" alt="핀" style="width: 100px"/>
-  예시 이미지 입니다.
-
-## 설치 및 임포트
-
-```javascript
-npm i roulette-img
+```bash
+npm install roulette-img
 ```
 
-```javascript
+# Usage 🛠️
+
+Import the Roulette component and configure it with your desired props:
+
+## basic example
+
+```js
+import React from "react";
 import { Roulette } from "roulette-img";
-```
 
-## 사용법
-
-```javascript
-//필요한 데이터 정리
-export interface Roulette {
-  imgUrl: string; //필수값
-  arrowImgUrl: string; //필수값
-  chunkRange: ChunkRange; //필수값
-  chunk?: number;
-  arrowPosition?: Arrow;
-  winNumber?: winNumber;
-  buttonText?: string;
-  buttonShape?: ButtonShape;
-  buttonStyle?: React.ReactNode; // 태그를 리턴값으로 보내 버튼을 커스터마이징 할 수 있습니다
-  onWin?: (winNumber: number | null) => void;
-}
-```
-
-```javascript
-//필요한 고정 컴포넌트 입니다
-<Roulette
-  imgUrl="/assets/bg_circle-" //번호와 확장자를 제외한 "-"까지 적어주세요
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }} //준비한 룰렛 이미지의 최소 칸과 최대 칸을 적어주세요
-></Roulette>
-```
-
-```javascript
-//선택 컴포넌트 입니다
-<Roulette
-  imgUrl="/assets/bg_circle-" //번호와 확장자를 제외한 "-"까지 적어주세요
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }} //준비한 룰렛 이미지의 최소 칸과 최대 칸을 적어주세요
-  chunk = 3 //룰렛의 칸 | 기본값:chunkRange.start | [chunkRange의" 범위]
-  arrowPosition = "up" //핀의 위치 | 기본값 :"up" | ["up","down","left","right]
-  winNumber //당첨 번호 | 기본값: 랜덤 | [chunkRange의" 범위]
-  buttonText = "start" //버튼텍스트 | 기본값: start
-  buttonShape = "round" //버튼 모양 | 기본값: round | [round,squre]
-></Roulette>
-```
-
-## 설정에 따른 모양
-
-```javascript
-<Roulette
-  imgUrl="/assets/bg_circle-"
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }}
-  chunk = 2
-  arrowPosition = "up" //핀의 위치 | 기본값 :"up" | ["up","down","left","right]
-  buttonText = "start" //버튼텍스트 | 기본값: start
-  buttonShape = "round" //버튼 모양 | 기본값: round | [round,squre]
-></Roulette>
-```
-
-<img src="public/assets/round-button.png" alt="라운드버튼" style="width: 50%;"/>
-
-```javascript
-<Roulette
-  imgUrl="/assets/bg_circle-"
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }}
-  chunk = 4
-  arrowPosition = "left" //핀의 위치 | 기본값 :"up" | ["up","down","left","right]
-  winNumber={{number:4,option:"none"}} //당첨 번호 | 기본값: 랜덤 | [chunkRange의" 범위]
-  buttonText = "start" //버튼텍스트 | 기본값: start
-  buttonShape = "square" //버튼 모양 | 기본값: round | [round,squre]
-></Roulette>
-```
-
-<img src="public/assets/square-button.png" alt="스퀘어" style="width: 50%;"/>
-
----
-
-## 스타일링 변경
-
-룰렛 이미지 - .roulette
-핀 이미지 - .arrow
-스타트 버튼 - .start-button
-
-```javascript
-  .start-button {
-    color: yellow;
-    background-color: red;
-  }
-```
-
-<img src="public/assets/style.png" alt="스타일변경" style="width: 50%;"/>
-
-## version 0.3.0 추가 기능
-
-1. 당첨 번호 콜백 함수
-
-```javascript
-const [winNumber, setWinNumber] = useState(0);
-
-const getWinNumber = (number: number) => {
-  setWinNumber(number);
+const App = () => {
+  return (
+    <Roulette
+      imgUrl="/assets/bg_circle-" // Path to roulette images (excluding number and extension)
+      arrowImgUrl="/assets/arrow.png" // Path to arrow image
+      chunkRange={{ start: 2, end: 6 }} // Minimum and maximum number of slots
+    />
+  );
 };
 
-<Roulette
-  imgUrl="/assets/bg_circle-"
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }}
-  onWin={getWinNumber}
-></Roulette>;
+export default App;
 ```
 
-- 위와 같은 방법으로 당첨 번호를 컨트롤할 수 있습니다.
+## advanced example
 
-2. 버튼 커스텀 기능
+```js
+import React, { useState } from "react";
+import { Roulette } from "roulette-img";
 
-```javascript
-<Roulette
-  imgUrl="/assets/bg_circle-"
-  arrowImgUrl="/assets/arrow.png"
-  chunkRange={{ start: 2, end: 6 }}
-  buttonStyle={
-    <>
-      <button>hello</button>
-    </>
-  }
-></Roulette>
-```
+const App = () => {
+  const [winNumber, setWinNumber] = (useState < number) | (null > null);
 
-- 위와 같은 방법으로 고정 버튼이 아닌 직접 버튼을 커스텀 할 수 있습니다.
-- 우선순위 buttonText,buttonShape < button.style
+  const handleWin = (number: number) => {
+    console.log(`Winning number: ${number}`);
+    setWinNumber(number);
+  };
 
----
-
-## version 0.3.2 추가 기능
-
-당첨번호를 외부 api에서 받아온 후 넘길수 있습니다.
-
-```javascript
-//타입이 변경되었습니다.
-export interface Roulette {
-  ...
-  winNumber?: number | null;
-  drivingType?: winNumberOption;
-  ...
-}
-
-
-export type winNumberOption = "async" | undefined;
-//async옵션은 외부 api에서 당첨번호를 받아와 사용할때 - buttonStyle옵션을 사용해 커스터마이징 버튼을 만든후 직접 api와 연결해주세요
-
-```
-
-```javascript
-  const [winNumber, setWinNumber] = useState<number | null>(null);
-
-  const clickButton = () => {
-    setWinNumber(null); // null로 초기화를 하면 버튼을 누를때마다 룰렛 돌아감 아닐시 한번만 돌아감
-    setTimeout(() => {
-      setWinNumber(2);
-    }, 3000);
+  const fetchWinNumber = () => {
+    setWinNumber(null); // Reset the roulette before spinning
+    setTimeout(() => setWinNumber(3), 3000); // Simulate an API call
   };
 
   return (
-    <div className="App">
-    //외부 API에서 당첨값을 받아 보낼때
+    <div>
       <Roulette
         imgUrl="/assets/bg_circle-"
         arrowImgUrl="/assets/arrow.png"
         chunkRange={{ start: 2, end: 6 }}
         winNumber={winNumber}
         drivingType="async"
-        buttonStyle={
-          <>
-            <button onClick={clickButton}>hello</button>
-          </>
-        }
-      ></Roulette>
-      //직접 값을 선언
-      <Roulette
-        imgUrl="/assets/bg_circle-"
-        arrowImgUrl="/assets/arrow.png"
-        chunkRange={{ start: 2, end: 6 }}
-        winNumber={2}
-        chunk={4}
-        arrowPosition="left"
-        buttonShape="squre"
-      ></Roulette>
-    //랜덤값
-      <Roulette
-        imgUrl="/assets/bg_circle-"
-        arrowImgUrl="/assets/arrow.png"
-        chunkRange={{ start: 2, end: 6 }}
-        chunk={6}
-        arrowPosition="right"
-      ></Roulette>
-      );
+        buttonStyle={<button onClick={fetchWinNumber}>Spin</button>}
+        onWin={handleWin}
+      />
+    </div>
+  );
+};
+
+export default App;
 ```
+
+# Props 📋
+
+| **Prop Name**   | **Type**                         | **Required**   | **Default**        | **Description**                                                     |
+| --------------- | -------------------------------- | -------------- | ------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | -------------------------------------- |
+| `imgUrl`        | `string`                         | ✅             | -                  | Path to the roulette images. Exclude the number and file extension. |
+| `arrowImgUrl`   | `string`                         | ✅             | -                  | Path to the arrow image.                                            |
+| `chunkRange`    | `{ start: number; end: number }` | ✅             | -                  | Range of the number of slots for the roulette.                      |
+| `chunk`         | `number`                         | ❌             | `chunkRange.start` | Number of slots in the roulette.                                    |
+| `arrowPosition` | `"up"                            | "down"         | "left"             | "right"`                                                            | ❌                                                                      | `"up"` | Position of the arrow on the roulette. |
+| `winNumber`     | `number                          | null`          | ❌                 | Random                                                              | Predefined winning slot. Random if not provided.                        |
+| `buttonText`    | `string`                         | ❌             | `"start"`          | Text displayed on the start button.                                 |
+| `buttonShape`   | `"round"                         | "square"`      | ❌                 | `"round"`                                                           | Shape of the start button.                                              |
+| `buttonStyle`   | `React.ReactNode`                | ❌             | -                  | Custom button component to replace the default start button.        |
+| `onWin`         | `(winNumber: number              | null) => void` | ❌                 | -                                                                   | Callback function triggered when the spin ends with the winning number. |
+| `drivingType`   | `"async"                         | undefined`     | ❌                 | `undefined`                                                         | Enables asynchronous winning number handling via external APIs.         |
+
+## Styling 🎨
+
+You can customize the styles of the roulette components using the following class names:
+
+| **Element**        | **Class Name**  | **Description**                         |
+| ------------------ | --------------- | --------------------------------------- |
+| **Roulette Image** | `.roulette`     | The spinning roulette wheel.            |
+| **Arrow Image**    | `.arrow`        | The arrow pointing to the winning slot. |
+| **Start Button**   | `.start-button` | The button to start spinning the wheel. |
+
+### Example
+
+```css
+.start-button {
+  background-color: red;
+  color: yellow;
+  font-size: 16px;
+}
+
+.arrow {
+  width: 50px;
+  height: 50px;
+}
+
+.roulette {
+  border: 5px solid #000;
+}
+```
+
+# Changelog 📝
+
+Version 0.3.2
+
+1. Added asynchronous winning number handling (drivingType="async").
+2. Enhanced button customization via buttonStyle.
+
+Version 0.3.0
+
+1. Added onWin callback to retrieve the winning number.
+2. Improved button customization options.

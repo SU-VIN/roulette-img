@@ -121,7 +121,11 @@ const Roulette = ({
           <img className="arrow" src={arrowImgUrl} />
         </div>
         {buttonStyle ? (
-          <button disabled={isDeactive} style={{ border: "none" }}>
+          <button
+            disabled={isDeactive}
+            onClick={startonClickHandler}
+            style={{ border: "none" }}
+          >
             {buttonStyle}
           </button>
         ) : (

@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "browser": "./browser/specific/main.js",
-  "description": "🎯내가 원하는 이미지로 생성하는 룰렛 컴포넌트 라이브러리",
+  "description": "🎯 A Roulette Component Library to Create Customizable Roulette with Your Own Images",
+  "license": "MIT",
   "author": {
     "name": "SU-VIN",
     "email": "dlatnqls225@naver.com"
